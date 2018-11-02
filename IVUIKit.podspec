@@ -14,6 +14,8 @@ s.homepage     = 'https://github.com/xuezou/IVUIKit'
 
 s.source       = { :git => "https://github.com/xuezou/IVUIKit.git", :tag => s.version}
 
+s.resource     = 'IVUIKit/IVUIKit.bundle'
+
 s.platform     = :ios
 
 s.ios.deployment_target = "9.0"
