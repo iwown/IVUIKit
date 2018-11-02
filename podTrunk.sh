@@ -15,5 +15,5 @@ git commit -am "${VERSION}"
 git push
 git tag ${VERSION}
 git push --tags
-pod lib lint
+pod lib lint --allow-warnings
 pod trunk push IVUIKit.podspec
