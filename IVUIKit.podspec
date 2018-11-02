@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 s.name         = 'IVUIKit'
 
-s.version      = "0.1.0"
+s.version      = "0.2.0"
 
 s.summary      = 'UI tools used in iwown iOS developer team'
 
@@ -26,8 +26,8 @@ s.resource     = 'IVUIKit/IVUIKit.bundle'
 
 s.requires_arc = true
 
-s.dependency 'lottie-ios', '~> 0.1.0'
-s.dependency 'MBProgressHUD', '~> 0.1.0'
+s.dependency 'lottie-ios', '~> 0.2.0'
+s.dependency 'MBProgressHUD', '~> 0.2.0'
 s.dependency 'Masonry'
 
 end
