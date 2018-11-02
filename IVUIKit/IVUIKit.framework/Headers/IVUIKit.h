@@ -45,7 +45,6 @@ FOUNDATION_EXPORT const unsigned char IVUIKitVersionString[];
 #import <IVUIKit/NavMenu.h>
 
 #import <IVUIKit/Toast.h>
-#import <IVUIKit/MBProgressHUD+Add.h>
 #import <IVUIKit/LoadingToast.h>
 
 #import <IVUIKit/UIControl+CWAdd.h>
