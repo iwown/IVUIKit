@@ -9,7 +9,7 @@ fi
 VERSION=$1
 
 cd /Users/scow/GitHub/IVUIKit/ 
-sed -i "" "s/\([0-9]\)\.\([0-9]\)\.\([0-9]\)/${VERSION}/g" IVUIKit.podspec
+sed -i "" "s/\"\([0-9]\)\.\([0-9]\)\.\([0-9]\)/\"${VERSION}/g" IVUIKit.podspec
 git add .
 git commit -am "${VERSION}" 
 git push

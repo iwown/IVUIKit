@@ -26,8 +26,8 @@ s.resource     = 'IVUIKit/IVUIKit.bundle'
 
 s.requires_arc = true
 
-s.dependency 'lottie-ios', '~> 0.2.0'
-s.dependency 'MBProgressHUD', '~> 0.2.0'
+s.dependency 'lottie-ios', '~> 2.5.0'
+s.dependency 'MBProgressHUD', '~> 0.9.2'
 s.dependency 'Masonry'
 
 end
