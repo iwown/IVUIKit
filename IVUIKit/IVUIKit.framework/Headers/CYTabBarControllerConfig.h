@@ -10,15 +10,19 @@ FOUNDATION_EXTERN NSString *const CYL_TabBarItemTitle;
 FOUNDATION_EXTERN NSString *const CYL_TabBarItemImage;
 FOUNDATION_EXTERN NSString *const CYL_TabBarItemSelectedImage;
 
+#import <UIKit/UIKit.h>
+
 @protocol CYTabBarControllerConfigDataSource <NSObject>
 
 @optional
 /**! Default is 0x081024<##>*/
 - (int)tabbarTintColor;
-
+/**!Default UIImageRenderingModeAutomatic*/
+- (UIImageRenderingMode)tabbarItemSelectImageRenderingMode;
+/**! Default is null, Determined by the iOS system<##>*/
+- (int)tabbarTitleSelectColor;
+- (int)tabbarTitleUnSelectColor;
 @end
-
-#import <UIKit/UIKit.h>
 
 @interface CYTabBarControllerConfig : NSObject
 
