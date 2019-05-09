@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
 s.name         = 'IVUIKit'
 
-s.version      = "0.9.1"
+s.version      = "0.9.2"
 
 s.summary      = 'UI tools used in iwown iOS developer team'
 
