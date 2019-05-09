@@ -18,6 +18,7 @@ FOUNDATION_EXTERN NSString *const CYL_TabBarItemSelectedImage;
 /**! Default is 0x081024<##>*/
 - (int)tabbarTintColor;
 /**!Default UIImageRenderingModeAutomatic*/
+- (UIImageRenderingMode)tabbarItemNormalImageRenderingMode;
 - (UIImageRenderingMode)tabbarItemSelectImageRenderingMode;
 /**! Default is null, Determined by the iOS system<##>*/
 - (int)tabbarTitleSelectColor;
