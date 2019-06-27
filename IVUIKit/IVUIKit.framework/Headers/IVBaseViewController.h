@@ -34,7 +34,10 @@
 /*设置渐变背景色*/
 - (void)setBgColorChange;
 /**! Default is UIStatusBarStyleLightContent*/
-- (void)setStatusBarStyle:(UIStatusBarStyle)sbStyle;
+- (void)setStatusBarStyle:(UIStatusBarStyle)sbStyle NS_DEPRECATED_IOS(2_0, 10_0, "Please use setGlobalStatusBarStyle: instead") NS_EXTENSION_UNAVAILABLE_IOS("");
 - (void)setHiddenStatusBar:(BOOL)hidden;
+
+/**! Default is UIStatusBarStyleLightContent*/
++ (void)setGlobalStatusBarStyle:(UIStatusBarStyle)sbStyle;
 
 @end
