@@ -1,0 +1,20 @@
+PODS:
+  - lottie-ios (2.5.3)
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - lottie-ios (~> 2.5.0)
+  - Masonry
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - lottie-ios
+    - Masonry
+
+SPEC CHECKSUMS:
+  lottie-ios: a50d5c0160425cd4b01b852bb9578963e6d92d31
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 318f4a7f6d759076969fa483236db75d1795397b
+
+COCOAPODS: 1.6.1

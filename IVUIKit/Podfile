@@ -1,0 +1,19 @@
+source 'https://github.com/CocoaPods/Specs'
+
+platform :ios, '8.0'
+
+
+workspace './IVUIKit.xcworkspace'
+
+target 'IVUIKit' do
+    pod 'Masonry'
+    pod 'lottie-ios', '~> 2.5.0'
+end∫
+
+target 'BKTest' do
+    pod 'Masonry'
+    pod 'lottie-ios', '~> 2.5.0'
+end
+
+
+    

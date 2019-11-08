@@ -1,6 +1,0 @@
-framework module IVUIKit {
-  umbrella header "IVUIKit.h"
-
-  export *
-  module * { export * }
-}
