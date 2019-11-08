@@ -70,6 +70,6 @@ FOUNDATION_EXPORT const unsigned char IVUIKitVersionString[];
 /******************************************************************************
  ***** REPLACE README FILE
  *
- * ver:     0.9.5
- * date:    2019-09-16
+ * ver:     0.9.7
+ * date:    2019-11-08
  */

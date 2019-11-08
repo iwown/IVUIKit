@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+CGPoint CGRectGetCenter(CGRect rect);
+CGRect  CGRectMoveToCenter(CGRect rect, CGPoint center);
+
 @interface UIView (Extension)
 
 @property (assign, nonatomic) CGFloat x;
@@ -21,6 +24,21 @@
 @property(assign,nonatomic)CGFloat right;
 @property(assign,nonatomic)CGFloat centerX;
 @property(assign,nonatomic)CGFloat centerY;
+/** tag */
+@property (nonatomic, copy) NSString *tagStr;
+
+- (BOOL)isShowingOnKeyWindow;
+
+@property (readonly) CGPoint bottomLeft;
+@property (readonly) CGPoint bottomRight;
+@property (readonly) CGPoint topRight;
+
+@property CGFloat top;
+@property CGFloat left;
+
+- (void) moveBy: (CGPoint) delta;
+- (void) scaleBy: (CGFloat) scaleFactor;
+- (void) fitInSize: (CGSize) aSize;
 
 /**
  Shortcut to set the layer's shadow

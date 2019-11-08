@@ -15,6 +15,7 @@
  *
  **/
 + (UIImage *)createImageWithColor:(UIColor *)color;
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
 + (UIImage *)gradientImage:(CGRect)frame andStartColor:(UIColor *)color andEndColor:(UIColor *)eColor;
 
 /**! 文字背景图

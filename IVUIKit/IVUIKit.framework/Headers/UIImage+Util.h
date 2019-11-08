@@ -18,13 +18,6 @@
 + (UIImage *)imageScale:(UIImage *)sourceImage
                  toSize:(CGSize)dsize;
 
-/**
- * 将UIColor变换为UIImage
- *
- **/
-+ (UIImage *)createImageWithColor:(UIColor *)color;
-+ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
-
 + (UIImage *)createImage:(UIImage *)srcImage WithText:(NSString *)text;
 
 #pragma mark- Screen shot
