@@ -163,8 +163,7 @@ NSString * const CSToastPositionBottom          = @"bottom";
     [self makeToastActivity:CSToastActivityDefaultPosition];
 }
 
-+ (void)makeToastActivityWithTimeout:(NSInteger)sec
-{
++ (void)makeToastActivityWithTimeout:(NSInteger)sec {
     [Toast makeToastActivity];
     [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideToastActivity) userInfo:nil repeats:NO];
 }
@@ -226,7 +225,6 @@ NSString * const CSToastPositionBottom          = @"bottom";
 }
 
 #pragma mark - Helpers
-
 - (CGPoint)centerPointForPosition:(id)point withToast:(UIView *)toast {
     if([point isKindOfClass:[NSString class]]) {
         if([point caseInsensitiveCompare:CSToastPositionTop] == NSOrderedSame) {

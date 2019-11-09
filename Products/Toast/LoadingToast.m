@@ -16,7 +16,6 @@ static dispatch_source_t __loadingTimer;
 @implementation LoadingToast
 
 + (void)makeToastActivity {
-    
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     UIView *loadView = [[UIView alloc] initWithFrame:window.bounds];
     loadView.backgroundColor = [UIColor colorWithHex:0x333333 alpha:0.3];
@@ -139,7 +138,6 @@ static dispatch_source_t __loadingTimer;
 
 + (void)hideToastActivity {
     [self cancelTimer];
-    NSLog(@"%s : %@",__func__,[NSThread callStackSymbols]);
     LOTAnimationView *existingGifView = (LOTAnimationView *)objc_getAssociatedObject(self, &IVLoadingGifViewKey);
     [existingGifView stop];
 }
