@@ -16,24 +16,7 @@ static NSMutableArray *__cacheArr = nil;
 @implementation LoadingToast
 
 + (void)makeToastActivity {
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    UIView *loadView = [[UIView alloc] initWithFrame:window.bounds];
-    loadView.backgroundColor = [UIColor colorWithHex:0x333333 alpha:0.3];
-    [window addSubview:loadView];
-
-    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[LoadingToast class]] pathForResource:@"IVUIKit" ofType:@"bundle"]];
-    LOTAnimationView *gifView = [LOTAnimationView animationNamed:@"loading/data_load" inBundle:bundle]; //[LOTAnimationView animationNamed:@"data_load"];
-    gifView.frame = CGRectMake(0, 0, 60, 20);
-    gifView.center = loadView.center;
-    [loadView addSubview:gifView];
-    [gifView playWithCompletion:^(BOOL animationFinished) {
-        [gifView removeFromSuperview];
-        [loadView removeFromSuperview];
-    }];
-    [gifView setLoopAnimation:YES];
-    [self performSelector:@selector(timeout) withObject:nil afterDelay:10];
-    
-    objc_setAssociatedObject (self, &IVLoadingGifViewKey, gifView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self makeToastActivityWithTimeOut:10];
 }
 
 + (void)makeToastActivityNoTimeOut {
@@ -54,7 +37,7 @@ static NSMutableArray *__cacheArr = nil;
     [gifView setLoopAnimation:YES];
     objc_setAssociatedObject (self, &IVLoadingGifViewKey, gifView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
-+ (void)makeToastActivityWithTimeOut:(double)second{
++ (void)makeToastActivityWithTimeOut:(double)second {
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     UIView *loadView = [[UIView alloc] initWithFrame:window.bounds];
     loadView.backgroundColor = [UIColor colorWithHex:0x333333 alpha:0.3];
