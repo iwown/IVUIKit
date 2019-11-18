@@ -18,6 +18,7 @@
 
 #import "UIView+IVStyle.h"
 #import "UIView+Extension.h"
+#import "UIView+Color.h"
 
 #import "AlertTool.h"
 
@@ -59,6 +60,6 @@
 /******************************************************************************
  ***** REPLACE README FILE
  *
- * ver:     1.0.0
- * date:    2019-11-09
+ * ver:     1.0.5
+ * date:    2019-11-18
  */
