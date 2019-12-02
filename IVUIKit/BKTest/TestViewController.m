@@ -11,6 +11,8 @@
 
 @interface TestViewController ()
 @property (nonatomic ,strong) LandScapePicker *lsPicker;
+
+@property (nonatomic ,strong) IVPickerView *pick;
 @end
 
 @implementation TestViewController
@@ -18,8 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor redColor];
-    [self drawlsPicker];
+    [self drawCountPicker];
     // Do any additional setup after loading the view.
+}
+
+- (void)drawCountPicker {
+    _pick = [IVPickerView countPickerStart:5 end:60 selectIndex:1 step:1];
+    _pick.frame = CGRectMake(0, 150, 375, 300);
+    _pick.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:_pick];
 }
 
 - (void)drawlsPicker {
@@ -33,11 +42,14 @@
     self.lsPicker.lspSelected = ^(NSInteger row, NSString *title) {
     };
 }
-
+    
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.lsPicker.pTitles = @[@"123"];
-    [self.lsPicker reload];
-    [self.lsPicker selectRow:0];
+    int cV = arc4random()%0x1000000;
+    _pick.backgroundColor = [UIColor colorWithHex:cV];
+    [_pick setCountTextColor:[UIColor whiteColor]];
+//    self.lsPicker.pTitles = @[@"123"];
+//    [self.lsPicker reload];
+//    [self.lsPicker selectRow:0];
 }
 
 - (void)didReceiveMemoryWarning {

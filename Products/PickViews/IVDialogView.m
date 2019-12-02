@@ -18,7 +18,6 @@
 @implementation IVDialogView
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         [self setupSubviews];
@@ -29,7 +28,6 @@
 }
 
 - (void)setupSubviews {
-    
     self.topView = [UIView new];
     [self addSubview:self.topView];
     self.topView.backgroundColor =  [UIColor colorFromCode:0x2ec990 inAlpha:1];

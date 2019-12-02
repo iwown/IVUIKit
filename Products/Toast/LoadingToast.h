@@ -13,8 +13,13 @@ typedef void(^TimeoutBlock)(void);
 
 /**Equal makeToastActivityWithTimeOut:10*/
 + (void)makeToastActivity;
-/** TimeOut 内部实现一套机制以避免多处调用的问题，但是带Block的方法内部不处理*/
+/** TimeOut 内部实现一套机制以避免多处调用的问题，但是带Block的方法内部不处理,
+ *  second < 0 ==> makeToastActivityNoTimeOut;
+ */
 + (void)makeToastActivityWithTimeOut:(double)second;
+/**
+ * 如果block不为空，second必须大于0
+ */
 + (void)makeToastActivityWithTimeOut:(double)second block:(TimeoutBlock)block;
 + (void)makeToastActivityNoTimeOut;
 

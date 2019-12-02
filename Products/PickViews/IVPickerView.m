@@ -12,35 +12,50 @@
 
 @interface IVPickerView ()<UIPickerViewDelegate,UIPickerViewDataSource>
 
-@property (nonatomic,strong)UIPickerView    *countPicker;
-@property (nonatomic,strong)UIDatePicker    *datePicker;
+@property (nonatomic,strong)UIPickerView *countPicker;
+@property (nonatomic,strong)UIDatePicker *datePicker;
 
-@property (nonatomic,assign)NSInteger   start;
-@property (nonatomic,assign)NSInteger   selectIndex;
-@property (nonatomic,assign)NSInteger   end;
-@property (nonatomic,assign)NSInteger  step;
+@property (nonatomic,assign)NSInteger start;
+@property (nonatomic,assign)NSInteger selectIndex;
+@property (nonatomic,assign)NSInteger end;
+@property (nonatomic,assign)NSInteger step;
 
-@property (nonatomic,strong)NSArray     *dataSource;
+@property (nonatomic,strong)NSArray *dataSource;
 
-@property (nonatomic,assign)PickerViewType       type;
+@property (nonatomic,assign)PickerViewType type;
 
 @property (nonatomic,copy)void (^leftClick)(void);
 @property (nonatomic,copy)void (^rightClick)(NSInteger count,NSInteger count2, NSDate *date);
 
+@property (nonatomic ,strong) UIColor *antitheticColor;
+
 @end
+
+
 @implementation IVPickerView
+
+- (void)setBackgroundColor:(UIColor *)backgroundColor {
+    [super setBackgroundColor:backgroundColor];
+    [self setCountTextColor:[backgroundColor antitheticColor]];
+}
+
+- (void)setCountTextColor:(UIColor *)color {
+    _antitheticColor = color;
+    if (self.countPicker) {
+        [self.countPicker reloadAllComponents];
+    }
+}
 
 + (instancetype)countPickerStart:(NSInteger)start
                              end:(NSInteger)end
                      selectIndex:(NSInteger)select {
-    return  [self countPickerStart:start end:end selectIndex:select step:1];
+    return [self countPickerStart:start end:end selectIndex:select step:1];
 }
 
 + (instancetype)countPickerStart:(NSInteger)start
                              end:(NSInteger)end
                      selectIndex:(NSInteger)select
                             step:(NSInteger)step {
-    
     IVPickerView *countPicker = [[IVPickerView alloc]initWithFrame:CGRectMake(0, 0, BK_SCREEN_WIDTH, BK_SCREEN_HEIGHT*0.4) andType:PickerTypeCount];
     countPicker.start = start;
     countPicker.end = end;
@@ -51,7 +66,6 @@
 
 + (instancetype)timePickerLeft:(NSInteger)left
                          right:(NSInteger)right {
-    
     IVPickerView *timePicker = [[IVPickerView alloc]initWithFrame:CGRectMake(0, 0, BK_SCREEN_WIDTH, BK_SCREEN_HEIGHT*0.4) andType:PickerTypeHour];
     UIPickerView *start = [timePicker viewWithTag:HOUR_PICKER1];
     UIPickerView *end = [timePicker viewWithTag:HOUR_PICKER2];
@@ -61,14 +75,12 @@
 }
 
 + (instancetype)timeMinPicker {
-    
     IVPickerView *countPicker = [[IVPickerView alloc]initWithFrame:CGRectMake(0, 0, BK_SCREEN_WIDTH, BK_SCREEN_HEIGHT*0.4) andType:PickerTypeCount];
     return countPicker;
 }
 
 + (instancetype)timePickerHour:(NSInteger)hour
                      andMinute:(NSInteger)minute {
-    
     IVPickerView *timePicker = [[IVPickerView alloc]initWithFrame:CGRectMake(0, 0, BK_SCREEN_WIDTH, BK_SCREEN_HEIGHT*0.4) andType:PickerTypeH_M];
     UIPickerView *start = [timePicker viewWithTag:H_M_PICKER1];
     UIPickerView *end = [timePicker viewWithTag:H_M_PICKER2];
@@ -78,7 +90,6 @@
 }
 
 + (instancetype)datePickerWithDate:(NSDate *)date {
-    
     IVPickerView *picker = [[IVPickerView alloc]initWithFrame:CGRectMake(0, 0, BK_SCREEN_WIDTH, BK_SCREEN_HEIGHT*0.4) andType:PickerTypeDate];
     if (!date) {
         NSDateFormatter *formate = [[NSDateFormatter alloc] init];
@@ -91,7 +102,6 @@
 
 + (instancetype)pickerWithDataSource:(NSArray *)dataSource
                          selectIndex:(NSInteger)select {
-    
     IVPickerView *picker = [[IVPickerView alloc] initWithFrame:CGRectMake(0, 0, BK_SCREEN_WIDTH, BK_SCREEN_HEIGHT*0.4) andType:PickerTypeWeightUnit];
     picker.dataSource = dataSource;
     [picker.countPicker selectRow:select inComponent:0 animated:NO];
@@ -100,7 +110,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
                       andType:(PickerViewType)type {
-    
     if (self = [super initWithFrame:frame]) {
         self.type = type;
         self.backgroundColor = [UIColor whiteColor];
@@ -138,7 +147,6 @@
 }
 
 - (void)setSelectIndex:(NSInteger)selectIndex {
-    
     _selectIndex = selectIndex;
     NSInteger row = (selectIndex - self.start);
     row = row > 0 ? row : 0;
@@ -146,7 +154,6 @@
 }
 
 - (void)setupSubviews {
-    
     self.topView = [UIView new];
     [self addSubview:self.topView];
     self.topView.backgroundColor =  [UIColor colorFromCode:0x2ec990 inAlpha:1];
@@ -173,7 +180,6 @@
 }
 
 - (void)setupLayouts {
-    
     [self.topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
         make.left.equalTo(self);
@@ -204,7 +210,7 @@
 }
 
 - (void)drawCountPicker {
-    
+    _antitheticColor = [UIColor blackColor];
     self.countPicker = [UIPickerView new];
     self.countPicker.delegate = self;
     self.countPicker.dataSource = self;
@@ -217,7 +223,6 @@
 }
 
 - (void)drawHourPicker {
-    
     UIPickerView *pickerView1 = [UIPickerView new];
     pickerView1.delegate = self;
     pickerView1.dataSource = self;
@@ -243,7 +248,6 @@
 }
 
 - (void)drawH_MPicker {
-    
     UIPickerView *pickerView1 = [UIPickerView new];
     pickerView1.delegate = self;
     pickerView1.dataSource = self;
@@ -269,7 +273,6 @@
 }
 
 - (void)drawDatePicker {
-    
     CGFloat w = self.frame.size.width;
     CGFloat h = self.frame.size.height;
     self.datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(w*0.1, h*0.25, w*0.8, h*0.7)];
@@ -285,7 +288,6 @@
 
 - (void)setLeftClicked:(void (^)(void))leftClick
        andRightClicked:(void (^)(NSInteger count1, NSInteger count2, NSDate *date))rightClick {
-    
     self.leftClick = leftClick;
     self.rightClick = rightClick;
 }
@@ -302,7 +304,6 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component {
-    
     if (self.type == PickerTypeCount) {
         return (self.end - self.start);
     }else if (self.type == PickerTypeH_M) {
@@ -325,13 +326,12 @@ numberOfRowsInComponent:(NSInteger)component {
             viewForRow:(NSInteger)row
           forComponent:(NSInteger)component
            reusingView:(UIView *)view {
-    
     if (!view) {
         CGFloat width = pickerView.bounds.size.width;
         
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, width, FONT(40))];
         label.font = [UIFont systemFontOfSize:FONT(26)];
-        label.textColor = [UIColor blackColor];
+        label.textColor = _antitheticColor;
         label.textAlignment = NSTextAlignmentCenter;
         if (self.type == PickerTypeHour) {
             label.frame = CGRectMake(0, 0, pickerView.frame.size.width, FONT(40));
@@ -345,7 +345,6 @@ numberOfRowsInComponent:(NSInteger)component {
     }
     return view;
 }
-
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView
 rowHeightForComponent:(NSInteger)component {
@@ -364,7 +363,6 @@ rowHeightForComponent:(NSInteger)component {
 
 #pragma mark Actions
 - (void)leftAction:(UIButton *)button {
-    
     if (self.leftClick) {
         self.leftClick();
     }
@@ -372,7 +370,6 @@ rowHeightForComponent:(NSInteger)component {
 }
 
 - (void)rightAction:(UIButton *)button {
-    
     if (self.rightClick) {
         if (self.type == PickerTypeCount) {
             NSInteger count = [self.countPicker selectedRowInComponent:0]+self.start;
@@ -400,7 +397,6 @@ rowHeightForComponent:(NSInteger)component {
 }
 
 - (void)show {
-    
     UIWindow *window = [[UIApplication sharedApplication].delegate window];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, BK_SCREEN_WIDTH, BK_SCREEN_HEIGHT)];
     view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
@@ -414,7 +410,6 @@ rowHeightForComponent:(NSInteger)component {
 }
 
 - (void)hide {
-    
     [UIView animateWithDuration:0.3f animations:^{
         [self setCenter:CGPointMake(self.center.x, self.center.y+self.frame.size.height)];
     } completion:^(BOOL finished) {

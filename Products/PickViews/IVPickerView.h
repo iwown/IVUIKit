@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger,PickerViewType) {
 
 @end
 
+
 @interface IVPickerView : UIView
 
 @property (nonatomic,assign)id<IVPickerDelegate> delegate;
@@ -58,5 +59,8 @@ typedef NS_ENUM(NSInteger,PickerViewType) {
 
 - (void)show;
 - (void)hide;
+
+/** Support only in countPicker*/
+- (void)setCountTextColor:(UIColor *)color;
 
 @end

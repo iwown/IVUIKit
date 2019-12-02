@@ -37,4 +37,22 @@
     return [self colorFromCode:hexCode inAlpha:1.0];
 }
 
+#pragma mark - Instance Methods
+- (UIColor *)antitheticColor {
+    CGFloat red, green, blue, alpha;
+    BOOL got = [self getRed:&red green:&green blue:&blue alpha:&alpha];
+    if (!got) {
+        return [UIColor whiteColor];
+    }
+    UIColor *antitheticColor = [UIColor colorWithRed:1-red green:1-green blue:1-blue alpha:alpha];
+    return antitheticColor;
+}
+
+- (BOOL)isSameColor:(UIColor *)color {
+    if (CGColorEqualToColor(self.CGColor, color.CGColor)) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

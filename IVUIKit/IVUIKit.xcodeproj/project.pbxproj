@@ -425,12 +425,12 @@
 		D65DE4A623757207008B4552 /* PickViews */ = {
 			isa = PBXGroup;
 			children = (
-				D65DE4A723757207008B4552 /* IVPickerView.m */,
-				D65DE4A823757207008B4552 /* LandScapePicker.m */,
 				D65DE4A923757207008B4552 /* IVDialogView.h */,
-				D65DE4AA23757207008B4552 /* IVPickerView.h */,
 				D65DE4AB23757207008B4552 /* IVDialogView.m */,
+				D65DE4AA23757207008B4552 /* IVPickerView.h */,
+				D65DE4A723757207008B4552 /* IVPickerView.m */,
 				D65DE4AC23757207008B4552 /* LandScapePicker.h */,
+				D65DE4A823757207008B4552 /* LandScapePicker.m */,
 			);
 			name = PickViews;
 			path = ../Products/PickViews;

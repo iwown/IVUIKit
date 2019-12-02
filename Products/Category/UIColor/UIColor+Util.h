@@ -16,4 +16,7 @@
 + (UIColor *)colorFromCode:(int)hexCode inAlpha:(float)alpha;
 + (UIColor *)colorFromCode:(int)hexCode;
 
+- (UIColor *)antitheticColor;
+- (BOOL)isSameColor:(UIColor *)color;
+
 @end
