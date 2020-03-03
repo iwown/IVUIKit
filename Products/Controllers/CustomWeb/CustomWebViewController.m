@@ -8,7 +8,7 @@
 #import "UKMacro.h"
 #import "CustomWebViewController.h"
 
-@interface CustomWebViewController () <UIWebViewDelegate>
+@interface CustomWebViewController () <WKNavigationDelegate>
 
 @property(nonatomic,strong)UIActivityIndicatorView *indicatorView;
 
@@ -25,8 +25,8 @@
 }
 
 - (void)initUI {
-    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, BK_NavigationBarHeight, BK_SCREEN_WIDTH, BK_SCREEN_HEIGHT-BK_NavigationBarHeight)];
-    self.webView.delegate = self;
+    self.webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, BK_NavigationBarHeight, BK_SCREEN_WIDTH, BK_SCREEN_HEIGHT-BK_NavigationBarHeight)];
+    self.webView.navigationDelegate = self;
     NSURL *url = [NSURL URLWithString:_remoteUrl];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self.view addSubview:self.webView];
@@ -45,15 +45,15 @@
 }
 
 //开始加载网页
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [self.indicatorView stopAnimating];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     NSLog(@"network error occur when load web page");
 }
 
