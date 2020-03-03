@@ -7,11 +7,12 @@
 //
 
 #import "IVBaseViewController.h"
+#import <WebKit/WebKit.h>
 
 @interface CustomWebViewController : IVBaseViewController
 
 @property(nonatomic,copy)NSString *navTitle;
 @property(nonatomic,copy)NSString *remoteUrl;
-@property(nonatomic,strong)UIWebView *webView;
+@property(nonatomic,strong)WKWebView *webView;
 
 @end
