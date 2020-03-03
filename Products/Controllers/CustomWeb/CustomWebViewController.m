@@ -44,5 +44,17 @@
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
+//开始加载网页
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    [self.indicatorView stopAnimating];
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    NSLog(@"network error occur when load web page");
+}
 
 @end
