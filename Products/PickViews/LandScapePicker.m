@@ -8,18 +8,17 @@
 
 #import "LandScapePicker.h"
 
-@interface LandScapePicker()<UIPickerViewDelegate,UIPickerViewDataSource>
-{
+@interface LandScapePicker()<UIPickerViewDelegate,UIPickerViewDataSource> {
     BOOL _isTransform;
 }
 @property (nonatomic ,strong) UIPickerView *pickerView;
 
 @end
 
+
 @implementation LandScapePicker
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
@@ -32,10 +31,7 @@
     return self;
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-    
     if (_isTransform) {
         return;
     }
@@ -56,6 +52,9 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView
 numberOfRowsInComponent:(NSInteger)component {
+    if (self.lspkTitles) {
+        return self.lspkTitles().count;
+    }
     return self.pTitles.count;
 }
 
@@ -72,7 +71,11 @@ numberOfRowsInComponent:(NSInteger)component {
     } else {
         label.font = [UIFont systemFontOfSize:17];
     }
-    label.text = self.pTitles[row];
+    if (self.lspkTitles) {
+        label.text = self.lspkTitles()[row];
+    }else {
+        label.text = self.pTitles[row];
+    }
     label.textColor = self.titleColor;
     label.textAlignment = NSTextAlignmentCenter;
     label.adjustsFontSizeToFitWidth = YES;
@@ -94,7 +97,13 @@ rowHeightForComponent:(NSInteger)component {
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component {
     if (self.lspSelected) {
-        self.lspSelected(row,self.pTitles[row]);
+        NSString *title;
+        if (self.lspkTitles) {
+            title = self.lspkTitles()[row];
+        }else {
+            title = self.pTitles[row];
+        }
+        self.lspSelected(row,title);
     }
 }
 
