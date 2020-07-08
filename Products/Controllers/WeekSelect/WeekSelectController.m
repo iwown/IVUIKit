@@ -224,6 +224,7 @@
 - (void)rightButtonAction {
     
     NSInteger week_repeat = self.week_repeat;
+    /*
     if (week_repeat == 128) {
         NSString *message = NSLocalizedString(@"Message", nil);
         NSString *pleaseSelectAtLeastOne = NSLocalizedString(@"Please select at least one", nil);
@@ -236,7 +237,7 @@
         [self  presentViewController:alert animated:YES completion:nil];
         return;
     }
-    
+    */
     if (self.weekSelectBlock) {
         self.weekSelectBlock(week_repeat);
     }

@@ -27,7 +27,17 @@
 - (void)drawNavMenu {
     __weak typeof(self) weakSelf = self;
     self.navbar = [NavMenu menuWithTitle:NSLocalizedString(@"Aktualizacja oprogramowania", @"Bind S1") textColor:[UIColor blackColor]];
+
     [self.navbar setLeftItem:@"你好" icon:nil clicked:^{
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        WeekSelectController *weekSelVc = [[WeekSelectController alloc] init];
+        weekSelVc.backgroundColor = [UIColor whiteColor];
+        weekSelVc.cellColor = [UIColor whiteColor];
+        weekSelVc.textColor = [UIColor redColor];
+        weekSelVc.separatorColor = [UIColor greenColor];
+        weekSelVc.navColorTop = [UIColor colorFromCode:0x186EDC];
+        weekSelVc.navColorBottom = [UIColor colorFromCode:0x0E4BBD];
+        [strongSelf.navigationController pushViewController:weekSelVc  animated:YES];
     }];
     [self.navbar setRightItem:@"Album" icon:nil clicked:^{
         TestViewController *testVC = [[TestViewController alloc] init];
