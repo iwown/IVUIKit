@@ -21,6 +21,7 @@ typedef void (^MenuItemClickBock)(void);
 @property(nonatomic,strong)MenuItem *rightButton;
 @property(nonatomic,strong)CALayer *line;
 @property(nonatomic,strong)MenuItem *subLeftButton;
+@property(nonatomic,strong)MenuItem *subRightButton;
 
 @property (nonatomic,assign)BOOL showLine;
 @property (nonatomic,strong)UIColor *iconColor;
@@ -36,6 +37,8 @@ typedef void (^MenuItemClickBock)(void);
 - (void)setGraduallyBGColor:(UIColor *)start andEndColor:(UIColor *)end;
 
 - (void)setSubLeftItem:(NSString *)title icon:(NSString *)icon clicked:(MenuItemClickBock)block;
+
+- (void)setSubRightItem:(NSString *)title icon:(NSString *)icon clicked:(MenuItemClickBock)block;
 
 @end
 

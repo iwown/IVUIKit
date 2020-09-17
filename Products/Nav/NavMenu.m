@@ -24,6 +24,7 @@
 @property(nonatomic,copy)MenuItemClickBock rightClicked;
 @property(nonatomic,copy)MenuItemClickBock subLeftClicked;
 @property(nonatomic,copy)MenuItemClickBock middleClicked;
+@property(nonatomic,copy)MenuItemClickBock subRightClicked;
 
 @property(nonatomic,strong)UIColor  *textColor;
 @end
@@ -116,6 +117,17 @@
     [self addSubview:self.subLeftButton];
 }
 
+- (void)setSubRightItem:(NSString *)title icon:(NSString *)icon clicked:(MenuItemClickBock)block {
+    
+    self.subRightButton = [self setButton:title img:icon];
+    self.subRightButton.titleLabel.font = [UIFont systemFontOfSize:20];
+    self.subRightButton.alignment = UIControlContentHorizontalAlignmentRight;
+    self.subRightClicked = block;
+    [self.subRightButton setFrame:CGRectMake(YC_SCREEN_WIDTH*0.7, BK_NavigationBarHeight - menuHeight-4, YC_SCREEN_WIDTH*0.2, menuHeight)];
+    [self.subRightButton addTarget:self action:@selector(subRightAction) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.subRightButton];
+}
+
 - (MenuItem *)setButton:(NSString *)title img:(NSString *)imgName {
 
     MenuItem *button = [MenuItem buttonWithType:UIButtonTypeCustom];
@@ -155,6 +167,12 @@
 - (void)subLeftAction {
     if (self.subLeftClicked) {
         self.subLeftClicked();
+    }
+}
+
+- (void)subRightAction {
+    if (self.subRightClicked) {
+        self.subRightClicked();
     }
 }
 

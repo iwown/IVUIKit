@@ -39,9 +39,12 @@
         weekSelVc.navColorBottom = [UIColor colorFromCode:0x0E4BBD];
         [strongSelf.navigationController pushViewController:weekSelVc  animated:YES];
     }];
-    [self.navbar setRightItem:@"Album" icon:nil clicked:^{
+    [self.navbar setRightItem:nil icon:@"share" clicked:^{
         TestViewController *testVC = [[TestViewController alloc] init];
         [weakSelf presentViewController:testVC animated:YES completion:nil];
+    }];
+    [self.navbar setSubRightItem:nil icon:@"data_feedback" clicked:^{
+        
     }];
     self.navbar.rightButton.titleLabel.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:self.navbar];
