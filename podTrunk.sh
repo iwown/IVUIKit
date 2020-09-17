@@ -8,7 +8,7 @@ fi
 
 VERSION=$1
 
-cd ~/GitHub/IVUIKit/ 
+cd /Users/zhanke/Documents/work/IVUIKit
 sed -i "" "s/\"\([0-9]\)\.\([0-9]\)\.\([0-9]\)/\"${VERSION}/g" IVUIKit.podspec
 git add .
 git commit -am "${VERSION}" 
